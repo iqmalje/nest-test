@@ -1,0 +1,24 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css');
+
+.top-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  box-shadow: -1px 5px 40px -1px rgba(0, 0, 0, 0.3);
+  height: 75px;
+}
+p {
+  margin: 0;
+}
+
+#menu-btn {
+  margin-right: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.content {
+  margin: 20px;
+}

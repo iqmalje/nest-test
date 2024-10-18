@@ -1,0 +1,23 @@
+table,
+th,
+td {
+  border: 1px solid;
+}
+
+td {
+  overflow: hidden;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  max-width: 300px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+tr {
+  transition: all 0.5s;
+}
+
+tr:not(:first-child):hover {
+  background-color: rgba(25, 86, 171, 0.685);
+  color: white;
+}

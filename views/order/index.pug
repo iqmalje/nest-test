@@ -1,0 +1,61 @@
+extends ../public/layout
+
+
+block title 
+    title Orders
+
+
+//- orderId: string;
+//-   accountId: string;
+//-   fileId: string;
+//-   apmId: string;
+//-   cost: number;
+//-   status: string;
+//-   date: Date;
+//-   rating: number;
+//-   statusReason: string;
+//-   hasPaid: boolean;
+//-   targetApm: string;
+
+block content
+    style
+        include ./index.css
+    h1 All orders
+    br
+    .input-group.rounded
+        input.form-control.rounded(type='text' placeholder='Email / Full name / Phone' aria-label='Search' aria-describedby='search-addon' onkeydown="search(this)")
+        span#search-addon.input-group-text.border-0
+        i.fas.fa-search
+    br
+    table
+        tr
+            th No. 
+            th Order ID
+            th Account ID
+            th file ID
+            th Cost
+            th Date
+            th Status
+        
+        each order, index in payload
+            tr(onclick='changeWindow("' + order.orderid + '")')
+                td #{index+1}
+                td #{order.orderid}
+                td #{order.accountid}
+                td #{order.fileid}
+                td RM #{order.cost}
+                td #{order.date}
+                td #{order.status}
+
+    script.
+        function changeWindow(orderid) {
+            window.location.href=`/order/${orderid}`
+        }
+
+        function search(ele) {
+            if(event.key === 'Enter') {
+                window.location.href=`/order?search=${ele.value}`       
+            }
+        }
+
+

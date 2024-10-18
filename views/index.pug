@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+  body 
+  table 
+    tr 
+      th ID
+      th Name
+      th Age
+    each user in payload
+      tr
+        td #{user.userID}
+        td #{user.name}
+        td #{user.age}
+  br
+  br
+  br
+  // create button to go add new user
+  button(type="button", onclick="redirect()") Add another user 
+
+
+  script.
+    function redirect() {
+      window.location.href="/user/add";
+    }
