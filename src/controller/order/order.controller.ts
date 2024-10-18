@@ -1,7 +1,7 @@
 import { Controller, Get, Query, Render, Req } from '@nestjs/common';
 import { Request } from 'express';
-import { AccountService } from 'src/account/account.service';
-import { FileService } from 'src/file/file.service';
+import { AccountService } from 'src/service/account/account.service';
+import { FileService } from 'src/service/file/file.service';
 import { OrderService } from 'src/service/order/order.service';
 
 @Controller('order')
@@ -25,6 +25,7 @@ export class OrderController {
     }
     return {
       payload: data,
+      query: query.search,
     };
   }
 
@@ -32,13 +33,15 @@ export class OrderController {
   @Render('order/detailed/index')
   async find(@Req() request: Request) {
     const data = await this.orderService.find(request.params.orderid);
-    const fileData = await this.fileService.find(data.fileId);
-    const accountData = await this.accountService.find(data.accountId);
+    const orderSettings = await this.orderService.findOrderSettings(
+      request.params.orderid,
+    );
+    // const fileData = await this.fileService.find(data.fileId);
+    // const accountData = await this.accountService.find(data.accountId);
     return {
       payload: {
         order: data,
-        file: fileData,
-        account: accountData,
+        settings: orderSettings,
       },
     };
   }

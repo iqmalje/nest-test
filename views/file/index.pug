@@ -1,0 +1,49 @@
+extends ../public/layout
+
+
+block title
+    title Files
+
+
+block content 
+    h1 Files
+    hr
+
+    br
+    .input-group.rounded
+        input.form-control.rounded(type='text' placeholder='File name' aria-label='Search' aria-describedby='search-addon' onkeydown="search(this)" value=query)
+        span#search-addon.input-group-text.border-0
+        i.fas.fa-search
+    br
+
+    table.table
+        thead
+            tr
+            th(scope='col') No
+            th(scope='col') File ID
+            th(scope='col') File Name
+            th(scope='col') Page count
+            th(scope='col') Account ID
+            
+        tbody
+
+            each file, index in payload
+                
+                tr(onclick='changeWindow("' + file.fileid + '")')
+                    th(scope='row') #{index}
+                    td #{file.fileid}
+                    td #{file.filename}
+                    td #{file.pagecount}
+                    td #{file.accountid}
+
+
+    script.
+        function changeWindow(fileid) {
+            window.location.href=`/file/${fileid}`
+        }
+
+        function search(ele) {
+            if(event.key === 'Enter') {
+                window.location.href=`/file?search=${ele.value}`       
+            }
+        }

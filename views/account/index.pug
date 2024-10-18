@@ -1,0 +1,55 @@
+extends ../public/layout
+
+
+block title
+    title Accounts
+
+block content
+
+    style
+        include ./index.css
+
+    h1 Accounts
+
+     br
+    .input-group.rounded
+        input.form-control.rounded(type='text' placeholder='Email / Full name / Phone' aria-label='Search' aria-describedby='search-addon' onkeydown="search(this)" value=query)
+        span#search-addon.input-group-text.border-0
+        i.fas.fa-search
+    br
+
+    hr
+
+    table.table
+        thead
+            tr
+            th(scope='col') No
+            th(scope='col') Account ID
+            th(scope='col') Full name
+            th(scope='col') Email
+            th(scope='col') Phone
+            th(scope='col') Status
+            
+        tbody
+
+            each account, index in payload
+                
+                tr(onclick='changeWindow("' + account.accountId + '")')
+                    th(scope='row') #{index}
+                    td #{account.accountId}
+                    td #{account.fullname}
+                    td #{account.email}
+                    td #{account.phone}
+                    td #{account.status}
+
+
+    script.
+        function changeWindow(accountid) {
+            window.location.href=`/account/${accountid}`
+        }
+
+        function search(ele) {
+            if(event.key === 'Enter') {
+                window.location.href=`/account?search=${ele.value}`       
+            }
+        }

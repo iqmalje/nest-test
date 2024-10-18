@@ -3,9 +3,13 @@ extends ../../public/layout
 block title 
     title Order
 
+
+
 block content
     h1 Order details 
-    p Order ID : #{payload.order.orderId}
+    p Order ID: #{payload.order.orderId}
+    p Account ID: #[a(href=`/account/${payload.order.accountId}` target="_blank") #{payload.order.accountId}]
+    p File ID:  #[a(href=`/file/${payload.order.fileId}` target="_blank") #{payload.order.fileId}]
     p APM ID: #{payload.order.apmId}
     p Cost: RM #{payload.order.cost}
     p Date: #{payload.order.date.toString()}
@@ -17,17 +21,11 @@ block content
 
     hr
 
-    h1 File details
-    p Filename: #{payload.file.filename}
-    p Page count: #{payload.file.pagecount}
-    p File URL: #[a(href=payload.file.fileurl target="_blank") #{payload.file.fileurl}]
-
-    hr
-
-    h1 Profile details
-    p Account ID: #{payload.account.accountId}
-    p Email: #[a(href="mailto: " + payload.account.email) #{payload.account.email}] 
-    p Phone: #{payload.account.phone}
-    p Profile Picture: #{payload.account.profilepic}
-    p Account status: #{payload.account.status}
+    h1 Order settings
+    p Layout: #{payload.settings.layout}
+    p Color: #{payload.settings.color}
+    p Side: #{payload.settings.side}
+    p Page per sheet: #{payload.settings.pagepersheet}
+    p Copies: #{payload.settings.copies}
+    p Pages: #{payload.settings.pages}
 

@@ -81,6 +81,18 @@ export class OrderService {
     };
   }
 
+  async findOrderSettings(orderId: string) {
+    const { data, error } = await supabase
+      .from('settings')
+      .select('*')
+      .eq('orderid', orderId)
+      .single();
+
+    if (error) throw error.message;
+
+    return data;
+  }
+
   async search(query: string): Promise<Order[]> {
     const { data, error } = await supabase.rpc('search_orders', {
       keyword: query,

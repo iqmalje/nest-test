@@ -1,28 +1,26 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Document
-  body 
-  table 
-    tr 
-      th ID
-      th Name
-      th Age
-    each user in payload
-      tr
-        td #{user.userID}
-        td #{user.name}
-        td #{user.age}
-  br
-  br
-  br
-  // create button to go add new user
-  button(type="button", onclick="redirect()") Add another user 
+extends ./public/layout
+
+block title
+  title PrinTEX Managerial
+
+block content
+
+  .content-index
+    style
+      include ./index.css
+
+    h1 Welcome to PrinTEX Managerial Website, choose an option below
+    br
+    br
+    br
+    .button-menu
+      button.btn.btn-secondary(type='button' onclick=`changeWindow('/account')`) Accounts
+      button.btn.btn-primary(type='button' onclick=`changeWindow('/order')`) Orders
+      button.btn.btn-info(type='button' onclick=`changeWindow('/file')`) Files
 
 
   script.
-    function redirect() {
-      window.location.href="/user/add";
+    function changeWindow(url){
+      window.location.href = url
     }
+    

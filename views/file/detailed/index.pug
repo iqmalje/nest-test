@@ -1,0 +1,12 @@
+extends ../../public/layout
+
+block title
+    title File
+
+block content
+    h1 File Detail
+    p File ID: #{payload.fileid}
+    p File name: #{payload.filename}
+    p Page count: #{payload.pagecount}
+    p Account ID: #[a(href=`/account/${payload.accountid}` target="_blank") #{payload.accountid}]
+    p File URL: #[a(href=payload.fileurl target="_blank") #{payload.fileurl}]

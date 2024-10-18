@@ -14,11 +14,15 @@ p {
 }
 
 #menu-btn {
-  margin-right: 10px;
+  margin-right: 50px;
   cursor: pointer;
   margin-left: 10px;
 }
 
 .content {
   margin: 20px;
+}
+
+h1 {
+  cursor: pointer;
 }

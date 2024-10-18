@@ -22,6 +22,16 @@ export interface Order {
   targetApm: string;
 }
 
+export interface OrderSettings {
+  orderId: string;
+  layout: string;
+  color: string;
+  side: string;
+  pagepersheet: string;
+  copies: number;
+  pages: string;
+}
+
 export interface Account {
   accountId: string;
   fullname: string;

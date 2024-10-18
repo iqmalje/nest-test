@@ -1,0 +1,12 @@
+extends ../../public/layout
+
+block title
+    title Account
+
+block content
+    h1 Account Detail
+    p Account ID: #{payload.accountId}
+    p Email: #[a(href="mailto: " + payload.email) #{payload.email}] 
+    p Phone: #{payload.phone}
+    p Profile Picture: #{payload.profilepic}
+    p Account status: #{payload.status}

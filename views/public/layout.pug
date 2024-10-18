@@ -9,7 +9,7 @@ html(lang="en")
     body 
         div(class="top-section") 
             i(class="bi bi-list fs-5" id="menu-btn")
-            p PrinTEX
+            h1(onclick="switchHome()") PrinTEX
             div
 
     
@@ -20,4 +20,6 @@ html(lang="en")
         block content
 
     script.
-        
+        function switchHome() {
+            window.location.href = '/'
+        }
