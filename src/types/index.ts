@@ -52,3 +52,55 @@ export interface File {
 export interface QueryOptions {
   limit: number;
 }
+
+export interface APM {
+  apmid: string;
+  printername: string;
+  pictureurl: string;
+  picture_url_2: string;
+  paper_amount: number;
+  owned_by: string;
+  status: string;
+}
+
+export interface APMDetails {
+  id: number;
+  apmid: string;
+  type: string;
+  bwprint: boolean;
+  colorprint: boolean;
+  bothsideprint: boolean;
+  papersize: string;
+  layout: string;
+}
+
+export interface APMAddresses {
+  apmid: string;
+  address1: string;
+  address2: string;
+  city: string;
+  state: string;
+  lat: number;
+  lng: number;
+}
+
+export interface APMCost {
+  apmid: string;
+  black_white_single: number;
+  black_white_both: number;
+  color_single: number;
+  color_both: number;
+  service_fee: number;
+}
+
+export interface OperatingHours {
+  id: number;
+  apmid: string;
+  monday: string;
+  tuesday: string;
+  wednesday: string;
+  thursday: string;
+  friday: string;
+  saturday: string;
+  sunday: string;
+}

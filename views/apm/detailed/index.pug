@@ -1,0 +1,83 @@
+extends ../../public/layout
+
+block title
+    title APM
+
+block content
+    style
+        include ./index.css
+
+    h1 APM General Information
+    
+    .general-info
+        .info
+            p APM ID: #{payload.apm.apmid}
+            p Printer Name: #{payload.apm.printername}
+            p Status: #{payload.apm.status}
+            p Owned by: #{payload.apm.owned_by}
+        .container(style="width:25%")
+            #myCarousel.carousel.slide(data-ride="carousel")
+                // Indicators
+                ol.carousel-indicators
+                    li.active(data-target="#myCarousel", data-slide-to="0")
+                    li(data-target="#myCarousel", data-slide-to="1")
+                // Wrapper for slides
+                .carousel-inner
+                    .item.active
+                        img(src=payload.apm.pictureurl, alt="Los Angeles", style="width:100%;")
+                    .item
+                        img(src=payload.apm.picture_url_2, alt="Chicago", style="width:100%;")
+                // Left and right controls
+                a.left.carousel-control(href="#myCarousel", data-slide="prev")
+                    span.glyphicon.glyphicon-chevron-left
+                    span.sr-only Previous
+                a.right.carousel-control(href="#myCarousel", data-slide="next")
+                    span.glyphicon.glyphicon-chevron-right
+                    span.sr-only Next
+
+    hr
+
+    h1 APM Details
+    p Printer Type: #{payload.apmDetail.type}
+    p Supports Black and White Printing: #{payload.apmDetail.bwprint}
+    p Supports Color Printing: #{payload.apmDetail.colorprint}
+    p Supports Duplex Printing: #{payload.apmDetail.bothsideprint}
+    p Supported Layout: #{payload.apmDetail.layout}
+
+    hr
+
+    h1 APM Address
+    p Address Line 1: #{payload.apmAddress.address1}
+    p Address Line 2: #{payload.apmAddress.address2}
+    p City: #{payload.apmAddress.city}
+    p State: #{payload.apmAddress.state}
+    p Latitude: #{payload.apmAddress.lat}
+    p Longitude: #{payload.apmAddress.lng}
+
+    hr
+
+    h1 APM Costs
+    p Single Black and White : RM #{payload.apmCost.black_white_single}
+    p Duplex Black and White : RM #{payload.apmCost.black_white_both}
+    p Single Color : RM #{payload.apmCost.color_single}
+    p Duplex Color : RM #{payload.apmCost.color_both}
+    p Service Fee : RM #{payload.apmCost.service_fee}
+
+    hr
+
+    h1 Operating Hours
+    p Monday: #{payload.operatingHours.monday}
+    p Tuesday: #{payload.operatingHours.tuesday}
+    p Wednesday: #{payload.operatingHours.wednesday}
+    p Thursday: #{payload.operatingHours.thursday}
+    p Friday: #{payload.operatingHours.friday}
+    p Saturday: #{payload.operatingHours.saturday}
+    p Sunday: #{payload.operatingHours.sunday}
+    
+
+    
+        
+    
+    
+    
+    

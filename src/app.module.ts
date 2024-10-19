@@ -7,6 +7,8 @@ import { FileService } from './service/file/file.service';
 import { AccountService } from './service/account/account.service';
 import { AccountController } from './controller/account/account.controller';
 import { FileController } from './controller/file/file.controller';
+import { ApmService } from './service/apm/apm.service';
+import { ApmController } from './controller/apm/apm.controller';
 
 @Module({
   imports: [],
@@ -15,7 +17,14 @@ import { FileController } from './controller/file/file.controller';
     OrderController,
     AccountController,
     FileController,
+    ApmController,
   ],
-  providers: [AppService, OrderService, FileService, AccountService],
+  providers: [
+    AppService,
+    OrderService,
+    FileService,
+    AccountService,
+    ApmService,
+  ],
 })
 export class AppModule {}
