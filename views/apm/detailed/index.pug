@@ -14,26 +14,28 @@ block content
             p APM ID: #{payload.apm.apmid}
             p Printer Name: #{payload.apm.printername}
             p Status: #{payload.apm.status}
-            p Owned by: #{payload.apm.owned_by}
-        .container(style="width:25%")
-            #myCarousel.carousel.slide(data-ride="carousel")
-                // Indicators
-                ol.carousel-indicators
-                    li.active(data-target="#myCarousel", data-slide-to="0")
-                    li(data-target="#myCarousel", data-slide-to="1")
-                // Wrapper for slides
-                .carousel-inner
-                    .item.active
-                        img(src=payload.apm.pictureurl, alt="Los Angeles", style="width:100%;")
-                    .item
-                        img(src=payload.apm.picture_url_2, alt="Chicago", style="width:100%;")
-                // Left and right controls
-                a.left.carousel-control(href="#myCarousel", data-slide="prev")
-                    span.glyphicon.glyphicon-chevron-left
-                    span.sr-only Previous
-                a.right.carousel-control(href="#myCarousel", data-slide="next")
-                    span.glyphicon.glyphicon-chevron-right
-                    span.sr-only Next
+            p Owned by: #[a(href=`/account/${payload.apm.owned_by}` target="_blank") #{payload.apm.owned_by}]
+        #carouselExampleCaptions.carousel.slide(style="width:25%")
+            .carousel-indicators
+                button.active(type="button", data-bs-target="#carouselExampleCaptions", data-bs-slide-to="0", aria-current="true", aria-label="Slide 1")
+                button(type="button", data-bs-target="#carouselExampleCaptions", data-bs-slide-to="1", aria-label="Slide 2")
+            .carousel-inner
+                .carousel-item.active
+                    img.d-block.w-100(src=payload.apm.pictureurl alt="...")
+                    .carousel-caption.d-none.d-md-block
+                        h5 APM Picture 1
+                        p APM Picture 1.
+                .carousel-item
+                    img.d-block.w-100(src=payload.apm.picture_url_2 alt="...")
+                    .carousel-caption.d-none.d-md-block
+                        h5 APM Picture 2
+                        p APM Picture 2.
+                button.carousel-control-prev(type="button", data-bs-target="#carouselExampleCaptions", data-bs-slide="prev")
+                    span.carousel-control-prev-icon(aria-hidden="true")
+                    span.visually-hidden Previous
+                button.carousel-control-next(type="button", data-bs-target="#carouselExampleCaptions", data-bs-slide="next")
+                    span.carousel-control-next-icon(aria-hidden="true")
+                    span.visually-hidden Next
 
     hr
 
@@ -73,6 +75,7 @@ block content
     p Friday: #{payload.operatingHours.friday}
     p Saturday: #{payload.operatingHours.saturday}
     p Sunday: #{payload.operatingHours.sunday}
+    
     
 
     

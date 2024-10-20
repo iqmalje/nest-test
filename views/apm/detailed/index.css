@@ -1,6 +1,10 @@
 .general-info {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+}
+
+.info {
+  margin-right: 100px;
 }

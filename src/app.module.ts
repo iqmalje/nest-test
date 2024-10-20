@@ -9,6 +9,7 @@ import { AccountController } from './controller/account/account.controller';
 import { FileController } from './controller/file/file.controller';
 import { ApmService } from './service/apm/apm.service';
 import { ApmController } from './controller/apm/apm.controller';
+import { AuthController } from './controller/auth/auth.controller';
 
 @Module({
   imports: [],
@@ -18,6 +19,7 @@ import { ApmController } from './controller/apm/apm.controller';
     AccountController,
     FileController,
     ApmController,
+    AuthController,
   ],
   providers: [
     AppService,

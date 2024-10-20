@@ -1,10 +1,22 @@
-import { Controller, Get, Query, Render, Req } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Query,
+  Render,
+  Req,
+  UseFilters,
+  UseGuards,
+} from '@nestjs/common';
 import { Request } from 'express';
+import { AuthFilter } from 'src/filter/auth/auth.filter';
+import { AuthenticationGuard } from 'src/guard/authentication/authentication.guard';
 import { AccountService } from 'src/service/account/account.service';
 import { FileService } from 'src/service/file/file.service';
 import { OrderService } from 'src/service/order/order.service';
 
 @Controller('order')
+@UseGuards(AuthenticationGuard)
+@UseFilters(AuthFilter)
 export class OrderController {
   constructor(
     private orderService: OrderService,
