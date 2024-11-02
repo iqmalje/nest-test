@@ -5,10 +5,15 @@ import { supabase } from 'src/db/supabase-connection';
 export class AuthenticationGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     // check supabase auth
-    const session = await supabase.auth.getSession();
-    if (!session.data.session) return false;
+    const user = await supabase.auth.getUser();
 
-    if (session.error) return false;
+    if (!user.data.user) return false;
+
+    if (user.error) return false;
+
+    if (user.data.user.role !== 'admin') {
+      return false;
+    }
 
     return true;
   }
