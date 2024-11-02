@@ -10,9 +10,10 @@ import { FileController } from './controller/file/file.controller';
 import { ApmService } from './service/apm/apm.service';
 import { ApmController } from './controller/apm/apm.controller';
 import { AuthController } from './controller/auth/auth.controller';
+import { FileModule } from './file/file.module';
 
 @Module({
-  imports: [],
+  imports: [FileModule],
   controllers: [
     AppController,
     OrderController,

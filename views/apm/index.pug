@@ -6,6 +6,8 @@ block title
 block content
     h1 Automated Printing Machines (APMs)
     hr
+
+    button.btn.btn-primary(type="button" onclick='gotoAdd()').ms-auto.me-auto Add new APM
     table.table
         thead
             tr
@@ -27,7 +29,11 @@ block content
     
     script.
         function changeWindow(apmid) {
-            window.location.href=`/apm/${apmid}`
+            window.location.href=`/apm/detail/${apmid}`
+        }
+
+        function gotoAdd() {
+            window.location.href='/apm/add'
         }
 
         

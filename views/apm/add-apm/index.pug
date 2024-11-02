@@ -1,0 +1,161 @@
+extends ../../public/layout
+
+block title
+    title Add APM
+
+
+block content
+    h1 Add a new APM
+    hr
+
+    form(method='POST' action='/apm/add' enctype='multipart/form-data')
+        .container.border.rounded.p-3
+            h4 APM Information
+            br
+            .form-group
+                label(for='printername') APM Name
+                input.form-control(type='text' id='printername' name='printername' required placeholder='PrinTEX KDSE (example)')
+            br
+            .form-group
+                label(for='pictureurl') First picture of APM
+                input.form-control(type='file' id='pictureurl' name='pictureurl' required accept='image/*')
+            br
+            .form-group
+                label(for='picture_url_2') Second picture of APM
+                input.form-control(type='file' id='picture_url_2' name='picture_url_2' required accept='image/*')
+            br
+            .form-group
+                label(for='paper_amount') Paper amount (can insert 0 or 500 for now)
+                input.form-control(type='number' id='paper_amount' name='paper_amount' required)
+            br
+            .form-group
+                label(for='owned_by') Owned by (insert iqmal's account id)
+                input.form-control(type='text' id='owned_by' name='owned_by' required placeholder='Insert iqmal\'s account id')
+        br
+        .container.border.rounded.p-3
+            h4 APM Details
+            br
+            .form-group
+                label(for='type') Printer Type
+                input.form-control(type='text' id='type' name='type' required placeholder='Inkjet Printer')
+            br
+            .form-check
+                input.form-check-input(type='checkbox' id='bwprint' name='bwprint' )
+                label(for='bwprint') Can print Black & White?
+            br
+            .form-check
+                input.form-check-input(type='checkbox' id='colorprint' name='colorprint' )
+                label(for='colorprint') Can print in color?
+            br
+            .form-check
+                input.form-check-input(type='checkbox' id='bothsideprint' name='bothsideprint' )
+                label(for='bothsideprint') Can print on both sides? (Duplex)
+            br
+            .form-group
+                label(for='papersize') Paper size
+                input.form-control(type='text' id='papersize' name='papersize' required placeholder='A4')
+            br
+            .form-group
+                label(for='layout') Supported layouts
+                input.form-control(type='text' id='layout' name='layout' required placeholder='1 in 1, 2 in 1, 4 in 1 & 6 in 1')
+            
+        br
+        .container.border.rounded.p-3
+            h4 APM Address
+            br
+            .form-group
+                label(for='address1') First line address
+                input.form-control(type='text' id='address1' name='address1' required placeholder='First line address')
+            br
+            .form-group
+                label(for='address2') Second line address
+                input.form-control(type='text' id='address2' name='address2' required placeholder='Second line address')
+            br
+            .form-group
+                label(for='city') City
+                input.form-control(type='text' id='city' name='city' required placeholder='Johor Bahru')
+            br
+            .form-group
+                label(for='state') State
+                input.form-control(type='text' id='state' name='state' required placeholder='Johor')
+            br
+            .form-group
+                label(for='lat') Latitude
+                input.form-control(type='number' id='lat' name='lat' required placeholder='Latitude')
+            br
+            .form-group
+                label(for='lng') Longitude
+                input.form-control(type='number' id='lng' name='lng' required placeholder='Longitude')
+        br
+        .container.border.rounded.p-3
+            h4 APM Costs
+            br
+            .form-group
+                label(for='black_white_single') Single Black & White cost (per sheet)
+                .input-group.mb-3
+                    .input-group-prepend
+                        span.input-group-text RM
+                    input.form-control(type='number' id='black_white_single' name='black_white_single' required)
+            br
+            .form-group
+                label(for='black_white_both') Duplex Black & White cost (per sheet)
+                .input-group.mb-3
+                    .input-group-prepend
+                        span.input-group-text RM
+                    input.form-control(type='number' id='black_white_both' name='black_white_both' required)
+            br
+            .form-group
+                label(for='color_single') Single Color cost (per page)
+                .input-group.mb-3
+                    .input-group-prepend
+                        span.input-group-text RM
+                    input.form-control(type='number' id='color_single' name='color_single' required)
+            br
+            .form-group
+                label(for='color_both') Duplex Color cost (per page)
+                .input-group.mb-3
+                    .input-group-prepend
+                        span.input-group-text RM
+                    input.form-control(type='number' id='color_both' name='color_both' required)
+            br
+            .form-group
+                label(for='service_fee') Service fee (per order)
+                .input-group.mb-3
+                    .input-group-prepend
+                        span.input-group-text RM
+                    input.form-control(type='number' id='service_fee' name='service_fee' required)
+        br
+        .container.border.rounded.p-3
+            h4 APM Operating Hours
+            br
+            .form-group
+                label(for='monday') Monday operating hours
+                input.form-control(type='text' id='monday' name='monday' required placeholder='Open 24 Hours')
+            br
+            .form-group
+                label(for='tuesday') Tuesday operating hours
+                input.form-control(type='text' id='tuesday' name='tuesday' required placeholder='Open 24 Hours')
+            br
+            .form-group
+                label(for='wednesday') Wednesday operating hours
+                input.form-control(type='text' id='wednesday' name='wednesday' required placeholder='Open 24 Hours')
+            br
+            .form-group
+                label(for='thursday') Thursday operating hours
+                input.form-control(type='text' id='thursday' name='thursday' required placeholder='Open 24 Hours')
+            br
+            .form-group
+                label(for='friday') Friday operating hours
+                input.form-control(type='text' id='friday' name='friday' required placeholder='Open 24 Hours')
+            br
+            .form-group
+                label(for='saturday') Saturday operating hours
+                input.form-control(type='text' id='saturday' name='saturday' required placeholder='Open 24 Hours')
+            br
+            .form-group
+                label(for='sunday') Sunday operating hours
+                input.form-control(type='text' id='sunday' name='sunday' required placeholder='Open 24 Hours')
+        br
+        .container.border.rounded.p-3.d-flex.justify-content-center
+            input(type='submit' value='Add new APM').btn.btn-danger
+            
