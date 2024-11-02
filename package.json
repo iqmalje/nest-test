@@ -7,6 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
+    "build-package": "pkg package.json",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -70,5 +71,13 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "main": "src/main.ts",
+  "bin": "src/main.ts",
+  "pkg": {
+    "assets": [
+      "views/**/*"
+    ],
+    "target": ["node8"]
   }
 }
