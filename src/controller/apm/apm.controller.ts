@@ -15,7 +15,7 @@ import { FileFieldsInterceptor } from '@nestjs/platform-express';
 import { Request, Response } from 'express';
 import { AuthFilter } from 'src/filter/auth/auth.filter';
 import { AuthenticationGuard } from 'src/guard/authentication/authentication.guard';
-import multerOptions from 'src/multer/multer.config';
+import multerOptions from '../../multer/multer.config';
 import { ApmService } from 'src/service/apm/apm.service';
 import {
   APM,
