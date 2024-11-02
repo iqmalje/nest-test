@@ -1,8 +1,20 @@
-import { Controller, Get, Query, Render, Req } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Query,
+  Render,
+  Req,
+  UseFilters,
+  UseGuards,
+} from '@nestjs/common';
 import { Request } from 'express';
+import { AuthFilter } from 'src/filter/auth/auth.filter';
+import { AuthenticationGuard } from 'src/guard/authentication/authentication.guard';
 import { AccountService } from 'src/service/account/account.service';
 
 @Controller('account')
+@UseGuards(AuthenticationGuard)
+@UseFilters(AuthFilter)
 export class AccountController {
   constructor(private accountService: AccountService) {}
 

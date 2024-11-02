@@ -7,10 +7,14 @@ import {
   Req,
   Res,
   UploadedFiles,
+  UseFilters,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
 import { Request, Response } from 'express';
+import { AuthFilter } from 'src/filter/auth/auth.filter';
+import { AuthenticationGuard } from 'src/guard/authentication/authentication.guard';
 import multerOptions from 'src/multer/multer.config';
 import { ApmService } from 'src/service/apm/apm.service';
 import {
@@ -22,6 +26,8 @@ import {
 } from 'src/types';
 
 @Controller('apm')
+@UseGuards(AuthenticationGuard)
+@UseFilters(AuthFilter)
 export class ApmController {
   constructor(private apmService: ApmService) {}
 

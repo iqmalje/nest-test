@@ -11,6 +11,7 @@ import { ApmService } from './service/apm/apm.service';
 import { ApmController } from './controller/apm/apm.controller';
 import { AuthController } from './controller/auth/auth.controller';
 import { FileModule } from './file/file.module';
+import { AuthService } from './service/auth/auth.service';
 
 @Module({
   imports: [FileModule],
@@ -28,6 +29,7 @@ import { FileModule } from './file/file.module';
     FileService,
     AccountService,
     ApmService,
+    AuthService,
   ],
 })
 export class AppModule {}
