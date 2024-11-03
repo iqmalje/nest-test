@@ -19,7 +19,10 @@ export class AuthenticationGuard implements CanActivate {
 
     if (user.error) return false;
 
-    if (user.data.user.role !== 'admin') {
+    if (
+      user.data.user.role !== 'admin' &&
+      user.data.user.role !== 'maintainer'
+    ) {
       return false;
     }
 

@@ -11,9 +11,9 @@ export class AuthService {
     const errorMessage = 'Incorrect email or password';
     if (error) throw errorMessage;
 
-    if (data.user.role !== 'admin') {
+    if (data.user.role !== 'admin' && data.user.role !== 'maintainer') {
       console.log(
-        `this ${data.user.email} tried to access, not being an admin, fucking dumbass`,
+        `this ${data.user.email} tried to access, not being an admin or a maintainer, fucking dumbass`,
       );
       await supabase.auth.signOut();
       throw errorMessage;
