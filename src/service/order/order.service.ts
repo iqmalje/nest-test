@@ -36,7 +36,7 @@ export class OrderService {
         .from('orders')
         .select('*')
         .order('date', { ascending: false })
-        .limit(options.limit);
+        .range(options.start, options.end);
 
       errorDB = error;
       dataDB = data;

@@ -50,7 +50,8 @@ export interface File {
 }
 
 export interface QueryOptions {
-  limit: number;
+  start: number;
+  end: number;
 }
 
 export interface APM {

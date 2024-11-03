@@ -23,10 +23,16 @@ block content
     h1 All orders
     br
     .input-group.rounded
-        input.form-control.rounded(type='text' placeholder='Email / Full name / Phone' aria-label='Search' aria-describedby='search-addon' onkeydown="search(this)" value=query)
+        input.form-control.rounded(type='text' placeholder='Email / Full name / Phone' aria-label='Search' aria-describedby='search-addon' onkeydown="search(this)" value=query.search)
         span#search-addon.input-group-text.border-0
         i.fas.fa-search
     br
+    nav(aria-label="...")
+      ul.pagination#pagination
+        li.page-item
+          a.page-link(onclick='previous()') Previous
+        li.page-item(onclick='next()')
+          a.page-link Next
     table
         tr
             th No. 
@@ -39,7 +45,7 @@ block content
         
         each order, index in payload
             tr(onclick='changeWindow("' + order.orderid + '")')
-                td #{index+1}
+                td #{startIndex+index + 1}
                 td #{order.orderid}
                 td #{order.accountid}
                 td #{order.fileid}
@@ -57,5 +63,31 @@ block content
                 window.location.href=`/order?search=${ele.value}`       
             }
         }
+
+        function next() {
+            const urlParams = new URLSearchParams(window.location.search)
+            let currentPage = urlParams.get('page') ?? '0'
+            currentPage = parseInt(currentPage) + 1
+            window.location.href='/order?page=' + currentPage.toString()
+        }
+        function previous() {
+            const urlParams = new URLSearchParams(window.location.search)
+            let currentPage = urlParams.get('page') ?? '1'
+            if(currentPage <= 1) {
+                 window.location.href='/order?page=1'
+            }
+            else {
+                currentPage = parseInt(currentPage) - 1
+                window.location.href='/order?page=' + currentPage.toString()
+            }
+        }
+        function getRealIndex(index) {
+            const urlParams = new URLSearchParams(window.location.search)
+            let currentPage = urlParams.get('page') ?? '0'
+            currentPage = parseInt(currentPage) - 1
+            return index + (50 * currentPage) + 1
+        }
+
+       
 
 

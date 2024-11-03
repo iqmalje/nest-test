@@ -18,11 +18,7 @@ import { OrderService } from 'src/service/order/order.service';
 @UseGuards(AuthenticationGuard)
 @UseFilters(AuthFilter)
 export class OrderController {
-  constructor(
-    private orderService: OrderService,
-    private fileService: FileService,
-    private accountService: AccountService,
-  ) {}
+  constructor(private orderService: OrderService) {}
 
   @Get()
   @Render('order/index')
@@ -30,14 +26,41 @@ export class OrderController {
     let data;
     if (query.search) {
       data = await this.orderService.search(query.search);
-    } else {
-      data = await this.orderService.findAll({
-        limit: 50,
-      });
+      return {
+        payload: data,
+        query: query,
+        startIndex: 0,
+      };
     }
+
+    if (query.page) {
+      const start = 50 * (query.page - 1);
+      const end = start + 49;
+      console.log(`start at ${start}, end at ${end}`);
+      data = await this.orderService.findAll({
+        start: 50 * (query.page - 1),
+        end: end,
+      });
+
+      return {
+        payload: data,
+        query: query,
+        startIndex: start,
+      };
+    }
+
+    data = await this.orderService.findAll({
+      start: 0,
+      end: 49,
+    });
+
     return {
       payload: data,
-      query: query.search,
+      query: {
+        search: '',
+        page: 1,
+      },
+      startIndex: 0,
     };
   }
 
