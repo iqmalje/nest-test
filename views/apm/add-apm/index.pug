@@ -81,11 +81,11 @@ block content
             br
             .form-group
                 label(for='lat') Latitude
-                input.form-control(type='number' id='lat' name='lat' required placeholder='Latitude')
+                input.form-control(type='number' id='lat' name='lat' required placeholder='Latitude' step='any')
             br
             .form-group
                 label(for='lng') Longitude
-                input.form-control(type='number' id='lng' name='lng' required placeholder='Longitude')
+                input.form-control(type='number' id='lng' name='lng' required placeholder='Longitude' step='any')
         br
         .container.border.rounded.p-3
             h4 APM Costs
@@ -95,35 +95,35 @@ block content
                 .input-group.mb-3
                     .input-group-prepend
                         span.input-group-text RM
-                    input.form-control(type='number' id='black_white_single' name='black_white_single' required)
+                    input.form-control(type='number' id='black_white_single' name='black_white_single' required step='any')
             br
             .form-group
                 label(for='black_white_both') Duplex Black & White cost (per sheet)
                 .input-group.mb-3
                     .input-group-prepend
                         span.input-group-text RM
-                    input.form-control(type='number' id='black_white_both' name='black_white_both' required)
+                    input.form-control(type='number' id='black_white_both' name='black_white_both' required step='any')
             br
             .form-group
                 label(for='color_single') Single Color cost (per page)
                 .input-group.mb-3
                     .input-group-prepend
                         span.input-group-text RM
-                    input.form-control(type='number' id='color_single' name='color_single' required)
+                    input.form-control(type='number' id='color_single' name='color_single' required step='any')
             br
             .form-group
                 label(for='color_both') Duplex Color cost (per page)
                 .input-group.mb-3
                     .input-group-prepend
                         span.input-group-text RM
-                    input.form-control(type='number' id='color_both' name='color_both' required)
+                    input.form-control(type='number' id='color_both' name='color_both' required step='any')
             br
             .form-group
                 label(for='service_fee') Service fee (per order)
                 .input-group.mb-3
                     .input-group-prepend
                         span.input-group-text RM
-                    input.form-control(type='number' id='service_fee' name='service_fee' required)
+                    input.form-control(type='number' id='service_fee' name='service_fee' required step='any')
         br
         .container.border.rounded.p-3
             h4 APM Operating Hours

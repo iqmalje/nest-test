@@ -123,14 +123,21 @@ export class ApmController {
     };
 
     try {
-      await this.apmService.addApm(
+      // await this.apmService.addApm(
+      //   apm,
+      //   apmDetail,
+      //   apmAddress,
+      //   apmCosts,
+      //   operatingHours,
+      // );
+      // response.redirect('/apm');
+      response.send({
         apm,
         apmDetail,
         apmAddress,
         apmCosts,
         operatingHours,
-      );
-      response.redirect('/apm');
+      });
     } catch (error) {
       response.render('error', {
         payload: {
