@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Post, Render, Res } from '@nestjs/common';
-import { Response } from 'express';
+import { Body, Controller, Get, Post, Render, Req, Res } from '@nestjs/common';
+import { Request, Response } from 'express';
 import { AuthService } from 'src/service/auth/auth.service';
 
 @Controller('auth')
@@ -16,7 +16,15 @@ export class AuthController {
     @Res() response: Response,
   ) {
     try {
-      await this.authService.login(body.email, body.password);
+      const accessToken = await this.authService.login(
+        body.email,
+        body.password,
+      );
+
+      const data = response.cookie('token', accessToken, {
+        maxAge: 1000 * 60 * 60,
+      });
+
       response.redirect('/');
     } catch (error) {
       response.render('auth/login', {
@@ -29,6 +37,7 @@ export class AuthController {
 
   @Post('logout')
   async logout(@Res() response: Response) {
+    response.clearCookie('token');
     await this.authService.logout();
 
     response.redirect('/');

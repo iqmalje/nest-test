@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import { init } from './db/supabase-connection';
+import * as cookieParser from 'cookie-parser';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -12,6 +13,7 @@ async function bootstrap() {
     logger: ['error', 'warn', 'log'],
   });
   console.log(join(__dirname, '..', '/src/views'));
+  app.use(cookieParser());
   app.useStaticAssets(join(__dirname, '..', '/src/public'));
   app.useStaticAssets(join(__dirname, '..', '/src/views'));
   app.setViewEngine('pug');

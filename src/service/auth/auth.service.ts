@@ -3,7 +3,7 @@ import { supabase } from 'src/db/supabase-connection';
 
 @Injectable()
 export class AuthService {
-  async login(email: string, password: string) {
+  async login(email: string, password: string): Promise<string> {
     const { data, error } = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
@@ -18,6 +18,8 @@ export class AuthService {
       await supabase.auth.signOut();
       throw errorMessage;
     }
+
+    return data.session.access_token;
   }
 
   async logout() {
