@@ -13,7 +13,9 @@ html(lang="en")
         div(class="top-section") 
             i(class="bi bi-list fs-5" id="menu-btn")
             h1(onclick="switchHome()") PrinTEX
-            div
+            .flex-fill
+            form(action='/auth/logout' method='POST')
+                input(type='submit' value='Sign out').btn.btn-danger.signout-btn
 
     
 

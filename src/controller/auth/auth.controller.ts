@@ -26,4 +26,11 @@ export class AuthController {
       });
     }
   }
+
+  @Post('logout')
+  async logout(@Res() response: Response) {
+    await this.authService.logout();
+
+    response.redirect('/');
+  }
 }

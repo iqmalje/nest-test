@@ -19,4 +19,8 @@ export class AuthService {
       throw errorMessage;
     }
   }
+
+  async logout() {
+    await supabase.auth.signOut();
+  }
 }

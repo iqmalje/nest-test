@@ -26,3 +26,7 @@ p {
 h1 {
   cursor: pointer;
 }
+
+.signout-btn {
+  margin-right: 50px;
+}
