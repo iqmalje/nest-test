@@ -1,0 +1,17 @@
+@media (min-width: 900px) {
+  .auto-screen-width {
+    width: 30%;
+  }
+}
+
+@media (max-width: 900px) {
+  .auto-screen-width {
+    width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .auto-screen-width {
+    width: 100%;
+  }
+}
