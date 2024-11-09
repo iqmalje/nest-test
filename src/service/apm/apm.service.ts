@@ -46,6 +46,17 @@ export class ApmService {
     });
   }
 
+  async updatePaperAmount(apmId: string, paperAmount: number) {
+    const { data, error } = await supabase
+      .from('apms')
+      .update({
+        paper_amount: paperAmount,
+      })
+      .eq('apmid', apmId);
+
+    return { data, error };
+  }
+
   async addApm(
     apm: APM,
     apmDetail: APMDetails,

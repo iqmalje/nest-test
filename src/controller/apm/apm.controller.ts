@@ -47,6 +47,33 @@ export class ApmController {
     };
   }
 
+  @Get('updatepaper/:apmid')
+  @Render('apm/update-paper/index')
+  async updatePaperRender() {
+    return {};
+  }
+
+  @Post('updatepaper')
+  async updatePaper(@Body() body, @Res() response: Response) {
+    const apmid = body.apmid;
+    const paperAmount = body.paper_amount;
+
+    const { data, error } = await this.apmService.updatePaperAmount(
+      apmid,
+      paperAmount,
+    );
+
+    if (error) {
+      response
+        .send({
+          error: error,
+        })
+        .status(400);
+    } else {
+      response.redirect('/apm');
+    }
+  }
+
   @Get('add')
   @Render('apm/add-apm/index')
   addNewAPMRender() {}

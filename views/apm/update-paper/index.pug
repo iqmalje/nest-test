@@ -1,0 +1,33 @@
+extends ../../public/layout
+
+block title
+    title APM
+
+block content
+    .container(style='width: 100vw; height: 100vh;').d-flex.justify-content-center.align-items-center
+        .container(style='width: 50%').shadow-lg.p-5.mb-5.bg-white-rounded.rounded
+            form(onsubmit="return confirm('Do you really want to submit the new paper amount?');" action='/apm/updatepaper' method='POST')
+                .form-group
+                    label(for="paperamount") New paper amount
+                    input#paperamount.form-control(type="number", aria-describedby="emailHelp", placeholder="Enter paper amount" name='paper_amount')
+                    br
+                    small#emailHelp.form-text.text-danger WARNING: Any changes made WILL overwrite current paper count stored in the APM machine, if the APM is currently printing, and is manually reset the paper count, it WILL count based on the latest value inserted.
+                    br
+                    br
+                    small#emailHelp.form-text.text-danger Please do a double check and make sure the amount inserted is correct and accurate
+                    br
+                    input(type='hidden' name='apmid' value='' id='apmidform')
+                    br
+                    input(type='submit' value='Update paper amount').btn.btn-danger
+
+
+    script.
+
+        loadHiddenAPMID();
+        function loadHiddenAPMID() {
+            const url = window.location.href;
+            const apmid = url.split('http://localhost:3000/apm/updatepaper/')[1]
+            document.getElementById('apmidform').value = apmid;
+        }
+
+                    

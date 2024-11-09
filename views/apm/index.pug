@@ -15,6 +15,7 @@ block content
             th(scope='col') APM ID
             th(scope='col') Name
             th(scope='col') Status
+            th(scope='col' style='width: 250px') Action
             
         tbody
 
@@ -25,6 +26,15 @@ block content
                     td #{apm.apmid}
                     td #{apm.printername}
                     td #{apm.status}
+                    td
+                        .container
+                            .row
+                                .col-sm
+                                    button.btn.btn-danger(onclick='event.stopPropagation(); redirectUpdate("' + apm.apmid + '")' z-index=3) Update paper amount
+                                .col-sm
+                                    button.btn.btn-success(z-index=3) Edit
+                       
+                        
 
     
     script.
@@ -34,6 +44,10 @@ block content
 
         function gotoAdd() {
             window.location.href='/apm/add'
+        }
+
+        function redirectUpdate(apmid) {
+            window.location.href = `/apm/updatepaper/${apmid}`
         }
 
         

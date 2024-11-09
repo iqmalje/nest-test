@@ -15,6 +15,8 @@ block content
             p Printer Name: #{payload.apm.printername}
             p Status: #{payload.apm.status}
             p Owned by: #[a(href=`/account/${payload.apm.owned_by}` target="_blank") #{payload.apm.owned_by}]
+            br
+            button.btn.btn-danger(onclick='toggleUpdatePaper()') Update Paper Amount
         #carouselExampleCaptions.carousel.slide(style="width:25%")
             .carousel-indicators
                 button.active(type="button", data-bs-target="#carouselExampleCaptions", data-bs-slide-to="0", aria-current="true", aria-label="Slide 1")
@@ -76,7 +78,11 @@ block content
     p Saturday: #{payload.operatingHours.saturday}
     p Sunday: #{payload.operatingHours.sunday}
     
-    
+    script.
+        function toggleUpdatePaper() {
+            const apmid = window.location.href.split('http://localhost:3000/apm/detail/')[1]
+            window.location.href = '/apm/updatepaper/' + apmid;
+        }
 
     
         
