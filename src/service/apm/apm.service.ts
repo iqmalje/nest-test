@@ -26,7 +26,8 @@ export class ApmService {
         `
         apmid,
         printername,
-        status
+        status,
+        paper_amount
         `,
       )
       .limit(50);
@@ -37,7 +38,7 @@ export class ApmService {
       return {
         apmid: apmRAW.apmid,
         owned_by: undefined,
-        paper_amount: undefined,
+        paper_amount: apmRAW.paper_amount,
         picture_url_2: undefined,
         pictureurl: undefined,
         printername: apmRAW.printername,
